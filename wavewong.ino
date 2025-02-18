@@ -8,13 +8,13 @@
 #include <Wire.h>
 
 #define MSG_BUFFER_SIZE (50)
-#define STASSID "xxxx"
-#define STAPSK "xxx"
+#define STASSID "wangcw"
+#define STAPSK "12231223"
 
 #define MAX17048_I2C_ADDRESS 0x36
-const char *clientID = "8bc56ebe"; // Client ID
-char sub[] = "Sub/390/222/8bc56ebe"; // Sub Topic
-char pub[] = "Pub/390/222/8bc56ebe"; // Pub Topic
+const char *clientID = "8bc56ebe";    // Client ID
+char sub[] = "Sub/390/222/8bc56ebe";  // Sub Topic
+char pub[] = "Pub/390/222/8bc56ebe";  // Pub Topic
 const char *mqtt_server = "mqtt.waveshare.cloud";
 
 StaticJsonDocument<400> sendJson;
@@ -27,7 +27,6 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 const unsigned long updateInterval = 5000;
-
 
 static const int RXPin = 17, TXPin = 18;
 static const uint32_t GPSBaud = 115200;
@@ -122,9 +121,9 @@ void loop() {
   sendJson["data"]["batteryLevel"] = batteryLevel;
 
   if (!client.connected()) {
-		reconnect();
-	}
-	client.loop();
+    reconnect();
+  }
+  client.loop();
 
   static const double LONDON_LAT = 51.508131, LONDON_LON = -0.128002;
 
